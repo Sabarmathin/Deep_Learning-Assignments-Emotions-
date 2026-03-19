@@ -30,7 +30,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import argparse
 import os
-from mmdnn.conversion.keras.keras_parser import KerasParser
+
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -46,7 +46,7 @@ args = vars(ap.parse_args())
 # initialize the initial learning rate, number of epochs to train for,
 # and batch size
 INIT_LR = 1e-4
-EPOCHS = 1
+EPOCHS = 10
 BS = 32
 
 # grab the list of images in our dataset directory, then initialize
@@ -147,13 +147,13 @@ print(classification_report(testY.argmax(axis=1), predIdxs,
 # serialize the model to disk
 print("[INFO] saving mask detector model...")
 model.save(args["model"])#, save_format="h5")
-os.environ["PYTHONUTF8"] = "1"
-os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
-model_path = r"D:\Hope AI Tamil\Deep Learning\Facial expressions\emotions\emotion_detector.h5"
-output_path = "emotion_model_ir"
-parser = KerasParser(model_path)
-parser.run(output_path)
-print("Conversion to IR successful!")
+#os.environ["PYTHONUTF8"] = "1"
+#os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+#model_path = r"D:\Hope AI Tamil\Deep Learning\Facial expressions\emotions\emotion_detector.h5"
+#output_path = "emotion_model_ir"
+#parser = KerasParser(model_path)
+#parser.run(output_path)
+#print("Conversion to IR successful!")
 
 # plot the training loss and accuracy
 N = EPOCHS
